@@ -1,0 +1,844 @@
+/* 1. Define Custom Fonts */
+@font-face {
+  font-family: 'Trueno'; /* Name to use in CSS */
+  src: url('assets/fonts/truenorg.otf') format('opentype'); /* Path to Regular font */
+  font-weight: normal; /* Corresponds to 400 */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Trueno'; /* Use the SAME name */
+  src: url('assets/fonts/truenobd.otf') format('opentype'); /* Path to Bold font */
+  font-weight: bold; /* Corresponds to 700 */
+  font-style: normal;
+}
+
+
+/* 2. Apply Fonts & Existing Styles */
+
+/* Basic Reset & Defaults */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  /* Apply Kentledge Regular to body */
+  font-family: 'Trueno', sans-serif; /* Use defined family name + fallback */
+  font-weight: normal; /* Ensure regular weight is default */
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header & Navigation */
+#header {
+  background-color: #ffffff;
+  color: #333;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+#header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#header .logo {
+  font-family: 'Trueno', sans-serif; /* Apply Kentledge */
+  font-weight: bold; /* Make Logo Bold */
+  font-size: 1.5rem;
+  color: #0056b3;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+#header .logo:hover {
+  transform: scale(1.05);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 25px;
+}
+
+.nav-links a {
+  font-family: 'Trueno', sans-serif; /* Apply Kentledge Regular to nav links */
+  font-weight: normal; /* Explicitly normal */
+  text-decoration: none;
+  color: #333;
+  /* font-weight: 400; /* Replaced by font-weight: normal above */
+  padding: 5px 10px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 50%;
+  background-color: #0056b3;
+  transition: all 0.3s ease-out;
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #0056b3;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #333;
+}
+
+
+/* Hero Section */
+/* Commenting out the animation keyframes as it wasn't used in the final hero */
+/*
+@keyframes animatedGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+*/
+
+.hero-section {
+  /* Using the image background with gradient overlay */
+  background:
+    linear-gradient(
+      to right,
+      rgba(15 , 92 , 169, 0.75) 0%,
+      rgba(15, 92 , 169, 0.55) 50%,
+      rgba(15, 92 , 169, 0) 75%
+    ),
+    url('/assets/images/led.jpg') no-repeat center center / cover; /* Make sure this image path is correct */
+
+  color: #fff;
+  height: 80vh;
+  min-height: 500px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  text-align: left;
+  max-width: 55%;
+  padding-left: 5%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Apply Kentledge Bold to Hero Title (h1) */
+.hero-content h1 {
+  font-family: 'Trueno', sans-serif;
+  font-weight: bold; /* Use Bold */
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Apply Kentledge Regular to Hero Paragraph */
+.hero-content p {
+  font-family: 'Trueno', sans-serif;
+  font-weight: normal; /* Use Regular */
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+}
+
+
+/* CTA Button - Apply Kentledge (adjust weight if needed) */
+.cta-button {
+  font-family: 'Trueno', sans-serif;
+  /* Keep button text bold for emphasis? Or set to normal? */
+  font-weight: bold; /* Let's keep it bold */
+  display: inline-block;
+  background-color: #28a745;
+  color: #fff;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 5px;
+  /* font-weight: bold; /* Replaced by above */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.cta-button:hover {
+  background-color: #218838;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.cta-button:active {
+  transform: translateY(-1px) scale(1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+#about .about-container {
+  display: flex; /* Enable Flexbox */
+  align-items: center; /* Vertically align items in the center */
+  gap: 40px; /* Add space between image and text (adjust as needed) */
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+#about .about-image {
+  flex: 1 1 250px; /* Flex properties: grow, shrink, basis (adjust basis width) */
+  max-width: 250px; /* Enforce max width */
+}
+
+#about .about-image img {
+  display: block; /* Remove extra space below image */
+  width: 100%; /* Make image fill its container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 15px; /* Apply border-radius */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
+}
+
+#about .about-text-content {
+  flex: 1 1 60%; /* Allow text content to take more space */
+}
+
+/* Adjust existing styles to work within the new layout */
+#about .about-text-content h2 {
+  text-align: left; /* Ensure heading is left-aligned */
+  margin-bottom: 20px; /* Adjust spacing below heading */
+  /* Font styles inherited from .content-section h2 */
+}
+
+#about .about-text-content p {
+  max-width: none; /* Remove max-width that centered it previously */
+  margin-left: 0; /* Remove auto margins */
+  margin-right: 0;
+  text-align: left; /* Change from justify if preferred */
+  /* Font styles inherited from .content-section p */
+}
+
+
+/* --- Responsiveness for About Us Section --- */
+@media (max-width: 768px) {
+  #about .about-container {
+    flex-direction: column; /* Stack image and text vertically */
+    gap: 30px; /* Adjust gap for vertical layout */
+    text-align: center; /* Center text content */
+  }
+
+
+
+  #about .about-image {
+    max-width: 300px; /* Allow image to be slightly larger when stacked */
+    margin: 0 auto; /* Center the image container */
+    flex-basis: auto; /* Reset basis */
+  }
+
+
+  #about .about-text-content {
+    flex-basis: auto; /* Reset basis */
+    text-align: center; /* Center text block */
+  }
+
+ 
+
+   #about .about-text-content h2 {
+    text-align: center; /* Center heading */
+  }
+
+   #about .about-text-content p {
+    text-align: center; /* Center paragraph */
+     max-width: 600px; /* Add back max-width for readability */
+     margin-left: auto;
+     margin-right: auto;
+  }
+}
+
+/* --- Add these styles for the Mission Section --- */
+
+#mission .mission-container {
+  display: flex; /* Enable Flexbox */
+  align-items: center; /* Vertically align items */
+  gap: 40px; /* Space between image and text */
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+#mission .mission-image {
+  flex: 1 1 300px; /* Adjust basis/max-width as needed */
+  max-width: 350px; /* Example max width */
+}
+
+#mission .mission-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 15px; /* Example border-radius */
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.1); /* Subtle light shadow on dark bg */
+}
+
+#mission .mission-text-content {
+  flex: 1 1 60%; /* Allow text to take more space */
+}
+
+/* Use the override colors defined for .alt-bg sections */
+#mission .mission-text-content h2 {
+  text-align: left;
+  margin-bottom: 20px;
+  color: #ffffff; /* White H2 from .alt-bg override */
+  /* Font styles inherited */
+}
+
+#mission .mission-text-content p,
+#mission .mission-text-content ul {
+  max-width: none; /* Remove centering max-width */
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left; /* Align text left */
+  color: #f0f0f0; /* Light text color from .alt-bg override */
+  /* Font styles inherited */
+}
+
+#mission .mission-text-content ul {
+  list-style: disc; /* Or desired list style */
+  padding-left: 25px; /* Indent list items */
+  margin-top: 1rem; /* Add space above list */
+}
+
+#mission .mission-text-content ul li {
+    margin-bottom: 0.5rem; /* Space between list items */
+    color: #f0f0f0; /* Ensure list items also use light color */
+}
+
+
+/* --- Responsiveness for Mission Section --- */
+@media (max-width: 768px) {
+  #mission .mission-container {
+    flex-direction: column; /* Stack vertically */
+    gap: 30px;
+  }
+
+  #mission .mission-image {
+    max-width: 350px; /* Adjust stacked image size */
+    margin: 0 auto; /* Center image */
+    flex-basis: auto;
+  }
+
+  #mission .mission-text-content {
+    flex-basis: auto;
+    text-align: center; /* Center text block */
+  }
+
+   #mission .mission-text-content h2 {
+    text-align: center;
+  }
+
+   #mission .mission-text-content p,
+   #mission .mission-text-content ul {
+    text-align: center; /* Center paragraph and list */
+     max-width: 600px;
+     margin-left: auto;
+     margin-right: auto;
+     padding-left: 0; /* Remove padding for centered list */
+     list-style-position: inside; /* Adjust list style position */
+  }
+}
+
+/* --- End of new styles for Mission --- */
+/* Content Sections */
+.content-section {
+  padding: 80px 0;
+  overflow: hidden; /* Keep this */
+}
+
+/* Apply Kentledge Bold to Section Titles (h2) */
+.content-section h2 {
+  font-family: 'Trueno', sans-serif;
+  font-weight: bold; /* Use Bold */ 
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  color: #0056b3;
+}
+
+/* Apply Kentledge Bold to Section Sub-Titles (h3) */
+.content-section h3 {
+  font-family: 'Trueno', sans-serif;
+  font-weight: bold; /* Use Bold */
+  margin-bottom: 1rem;
+  color: #007bff;
+  font-size: 1.4rem;
+}
+
+/* Body text within sections already inherits from body */
+.content-section p,
+.content-section ul {
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.content-section ul {
+  list-style-position: inside;
+  padding-left: 20px;
+}
+
+.content-section.alt-bg {
+  background-color: #0f5ca9;
+}
+
+.content-section.alt-bg h2, p1, ul {
+  color: #ffffff; /* WHITE color */
+}
+
+.content-section.alt-bg h3 {
+  color: #000000; /* WHITE color */
+}
+
+/* Services Grid */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  text-align: center;
+}
+
+.service-item {
+  background-color: #fff;
+  padding: 30px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 86, 179, 0.15);
+}
+
+/* Apply Kentledge Bold to Service Titles (h3 within service-item) */
+.service-item h3 {
+  font-family: 'Trueno', sans-serif;
+  font-weight: bold; /* Use Bold */
+  margin-bottom: 15px;
+  color: #007bff;
+  font-size: 1.25rem;
+}
+/* Service item paragraph text inherits regular from body */
+
+.service-icon {
+  max-width: 60px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+/* --- Add/Update these styles for the Partners Section --- */
+
+/* Optional: Add some space below the main H2 */
+#partners h2 {
+  margin-bottom: 50px; /* Increase space */
+}
+
+.partners-list {
+/* Optional: Add styling to the overall list container if needed */
+/* e.g., max-width: 900px; margin: 0 auto; */
+}
+
+.partner-item {
+display: flex; /* Use Flexbox for side-by-side layout */
+align-items: center; /* Vertically align icon and text */
+gap: 25px; /* Space between icon and text (adjust as needed) */
+margin-bottom: 35px; /* Space between each partner item */
+padding-bottom: 20px; /* Optional: Add padding below */
+border-bottom: 1px solid #eee; /* Optional: Separator line */
+}
+/* Remove border for the last item */
+.partner-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+
+.partner-item img {
+width: 200px; /* Set icon width */
+height: 200px; /* Set icon height */
+object-fit: contain; /* Ensure icon fits without stretching */
+flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+
+.partner-item p {
+margin: 0; /* Remove default paragraph margin */
+flex-grow: 1; /* Allow paragraph to take remaining space */
+text-align: left; /* Align paragraph text left */
+line-height: 1.6; /* Adjust line height if needed */
+/* Color and font will be inherited from .content-section p */
+/* If #partners has .alt-bg, ensure light color is applied */
+/* color: #f0f0f0; */
+}
+
+
+.partner-logos {
+  display: flex;
+  flex-direction: column; /* Stack vertically */
+  align-items: center; /* Center logos horizontally */
+}
+
+/* --- Responsiveness for Partners Section (Optional) --- */
+@media (max-width: 576px) { /* Example breakpoint */
+  .partner-item {
+      /* Optional: Stack on very small screens if needed */
+      /* flex-direction: column;
+      align-items: flex-start;
+      text-align: center; */
+      gap: 15px; /* Reduce gap */
+  }
+  /* .partner-item img {
+      margin: 0 auto 10px auto;
+  }
+  .partner-item p {
+      text-align: center;
+  } */
+}
+
+/* --- End of new styles for Partners --- */
+
+
+/* Interactive Diagram Placeholder Styles */
+#interactive-diagram-placeholder {
+  margin-top: 30px;
+  border: 1px dashed #adb5bd;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  text-align: center;
+}
+#interactive-diagram-placeholder svg text {
+    /* Try applying default font to SVG text */
+    font-family: 'Kentledge', sans-serif;
+    font-weight: normal;
+}
+#interactive-diagram-placeholder svg text[font-weight="bold"] {
+     font-weight: bold; /* Ensure bold is picked up if set in SVG */
+}
+
+.placeholder-note {
+  font-style: italic;
+  color: #6c757d;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+/* Contact Section */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Contact info text inherits regular from body */
+.contact-info p {
+  margin-bottom: 1rem;
+  text-align: left;
+  max-width: none;
+}
+.contact-info strong {
+    /* Make labels like Address:, Phone: bold */
+  font-weight: bold;
+  color: #343a40;
+}
+.contact-info a {
+  color: #0056b3;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.contact-info a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+/* Contact form sub-title already covered by .content-section h3 */
+.contact-form h3 {
+   /* font-family: 'Kentledge', sans-serif; /* Inherited */
+   /* font-weight: bold; /* Inherited */
+}
+
+/* Apply Kentledge Bold to form labels */
+.contact-form label {
+  font-family: 'Trueno', sans-serif;
+  font-weight: bold; /* Make labels bold */
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Apply Kentledge Regular to form inputs */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Kentledge', sans-serif; /* Use Regular */
+  font-weight: normal; /* Use Regular */
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form input[type="tel"]:focus,
+.contact-form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form button[type="submit"] {
+  width: auto;
+  margin-top: 10px;
+  /* Font inherited from .cta-button */
+}
+
+/* Footer */
+footer {
+  background-color: #343a40;
+  color: #f8f9fa;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 50px;
+  /* Footer text inherits regular from body */
+}
+
+/* --- Responsiveness --- */
+/* Media queries remain the same - font sizes adjust based on html font-size */
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+    border-top: 1px solid #eee;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 0;
+  }
+  .nav-links a {
+    padding: 12px 20px;
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .nav-links li:last-child a {
+    border-bottom: none;
+  }
+  .nav-links a::after {
+    display: none;
+  }
+   .nav-links a:hover,
+   .nav-links a.active {
+    background-color: #f0f0f0;
+    color: #0056b3;
+   }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .content-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+  .contact-info {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+   .hero-content p {
+    font-size: 1rem;
+  }
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    width: 80%;
+    max-width: 250px;
+  }
+  .contact-form button[type="submit"] {
+     width: 100%;
+  }
+  .nav-links {
+    top: 60px;
+  }
+  .partner-logos span,
+  .partner-logos img {
+    margin: 5px 10px;
+  }
+}
+
+/* --- Modal Styles --- */
+
+.modal-overlay {
+  position: fixed; /* Stay in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  display: flex; /* Use flex for centering */
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Ensure it's on top */
+  opacity: 0; /* Start hidden */
+  visibility: hidden; /* Start hidden */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade */
+}
+
+.modal-overlay.active {
+  opacity: 1; /* Fade in */
+  visibility: visible; /* Make it visible */
+}
+
+.modal-box {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  text-align: center;
+  max-width: 90%;
+  width: 400px; /* Max width of modal */
+  position: relative;
+  transform: scale(0.9); /* Start slightly smaller */
+  transition: transform 0.3s ease; /* Smooth pop effect */
+}
+
+.modal-overlay.active .modal-box {
+    transform: scale(1); /* Scale to full size when active */
+}
+
+
+.modal-icon {
+    margin-bottom: 15px;
+}
+/* Optional: Style SVG icon color if not set inline */
+/* .modal-icon svg { color: #28a745; } */
+
+
+.modal-box h3 {
+  font-family: 'Trueno', sans-serif; /* Or your title font */
+  font-weight: bold;
+  color: #333; /* Dark title color */
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+}
+
+.modal-box p {
+  font-family: 'Kentledge', sans-serif; /* Or your body font */
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  text-align: center; /* Ensure centered */
+  max-width: none; /* Override centering margins if needed */
+  margin-left: 0;
+  margin-right: 0;
+}
+.modal-box p:last-of-type {
+    margin-bottom: 0;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 2rem; /* Make X larger */
+  line-height: 1;
+  cursor: pointer;
+  color: #aaa;
+  padding: 5px;
+  transition: color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  color: #666;
+}
+
+/* --- End Modal Styles --- */
