@@ -373,7 +373,7 @@ body {
 
    #mission .mission-text-content p,
    #mission .mission-text-content ul {
-    text-align: center; /* Center paragraph and list */
+    text-align: left; /* Center paragraph and list */
      max-width: 600px;
      margin-left: auto;
      margin-right: auto;
