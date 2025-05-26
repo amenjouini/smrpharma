@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
 
             const formData = new FormData(form);
-            const formSubmitUrl = "https://formsubmit.co/amen.jouini18@gmail.com";
+            const formSubmitUrl = "https://formsubmit.co/contact@smrpharmaplus.com";
 
             // Update button state
             if(submitButton) {
